@@ -8,7 +8,7 @@
 /* 🔹 Animated Gradient Background */
 body {
     font-family: 'Poppins', sans-serif;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,16 +25,67 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* 🔹 Glass Container */
+/* ========================= */
+/* ☁️ CLOUD BACKGROUND */
+/* ========================= */
+
+.sky {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.cloud {
+    position: absolute;
+    background: rgba(255,255,255,0.4);
+    border-radius: 50%;
+    filter: blur(20px);
+}
+
+.cloud1 {
+    width: 200px;
+    height: 80px;
+    top: 20%;
+    left: -200px;
+    animation: moveClouds 40s linear infinite;
+}
+
+.cloud2 {
+    width: 250px;
+    height: 90px;
+    top: 50%;
+    left: -250px;
+    animation: moveClouds 60s linear infinite;
+}
+
+.cloud3 {
+    width: 180px;
+    height: 70px;
+    top: 75%;
+    left: -180px;
+    animation: moveClouds 50s linear infinite;
+}
+
+@keyframes moveClouds {
+    from { transform: translateX(0); }
+    to { transform: translateX(120vw); }
+}
+
+/* ========================= */
+/* 🔹 CONTAINER */
+/* ========================= */
+
 .container {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
     border-radius: 25px;
     padding: 40px;
     width: 100%;
-    max-width: 480px;
+    max-width: 520px;
     text-align: center;
     color: white;
+    overflow: hidden;
 
     box-shadow:
         0 8px 32px rgba(0,0,0,0.3),
@@ -45,7 +96,6 @@ body {
 h1 {
     font-size: 2.8rem;
     margin-bottom: 10px;
-    letter-spacing: 1px;
 }
 
 /* 🔹 Tagline */
@@ -54,87 +104,73 @@ h1 {
     opacity: 0.8;
 }
 
-/* 🔍 Search Section */
+/* ========================= */
+/* 🔍 SEARCH */
+/* ========================= */
+
 .search-section {
     display: flex;
     gap: 10px;
     margin-bottom: 25px;
 }
 
-/* 🧠 Input */
 #city-input {
     flex: 1;
     padding: 14px 20px;
     border-radius: 30px;
     border: none;
     outline: none;
-    font-size: 1rem;
-
     background: rgba(255,255,255,0.2);
     color: white;
-    backdrop-filter: blur(10px);
-
-    transition: 0.3s;
 }
 
 #city-input::placeholder {
     color: rgba(255,255,255,0.7);
 }
 
-#city-input:focus {
-    background: rgba(255,255,255,0.3);
-    box-shadow: 0 0 10px rgba(255,255,255,0.5);
-}
-
-/* 🔘 Button */
 #search-btn {
     padding: 14px 25px;
     border-radius: 30px;
     border: none;
     cursor: pointer;
-    font-size: 1rem;
     color: white;
 
     background: linear-gradient(135deg, #ff7eb3, #ff758c);
-    box-shadow: 0 4px 15px rgba(255, 118, 136, 0.5);
-
-    transition: all 0.3s ease;
+    transition: 0.3s;
 }
 
 #search-btn:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(255, 118, 136, 0.7);
+    transform: translateY(-2px);
 }
 
 #search-btn:active {
     transform: scale(0.95);
 }
 
-/* 🌤 Weather Info */
+/* ========================= */
+/* 🌤 WEATHER DISPLAY */
+/* ========================= */
+
 .weather-info {
+    margin-top: 10px;
     animation: fadeIn 0.6s ease;
 }
 
-/* 🌆 City */
 .city-name {
     font-size: 2rem;
-    margin-bottom: 10px;
 }
 
-/* 🌡 Temperature */
 .temperature {
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: bold;
-    margin: 15px 0;
+    margin: 10px 0;
 }
 
-/* 🌥 Description */
 .description {
     font-size: 1.2rem;
     opacity: 0.9;
 }
 
-/* 🌤 Icon */
 .weather-icon {
     width: 120px;
     animation: float 3s ease-in-out infinite;
@@ -142,23 +178,17 @@ h1 {
 
 /* 🌊 Floating Effect */
 @keyframes float {
-    0% { transform: translateY(0px); }
+    0% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
+    100% { transform: translateY(0); }
 }
 
-/* ❌ Error */
-.error-message {
-    background: rgba(255, 0, 0, 0.15);
-    padding: 20px;
-    border-radius: 15px;
-    border-left: 5px solid red;
-    backdrop-filter: blur(10px);
-}
+/* ========================= */
+/* 🔄 LOADING */
+/* ========================= */
 
-/* 🔄 Loading */
 .loading-container {
-    text-align: center;
+    margin-top: 20px;
 }
 
 .spinner {
@@ -171,20 +201,76 @@ h1 {
     animation: spin 1s linear infinite;
 }
 
-/* 🔄 Spin Animation */
 @keyframes spin {
-    0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
 
-/* 🎬 Fade In */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+/* ========================= */
+/* ❌ ERROR */
+/* ========================= */
+
+.error-message {
+    margin-top: 20px;
+    background: rgba(255, 0, 0, 0.15);
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 5px solid red;
 }
 
-/* 📱 Responsive */
-@media (max-width: 500px) {
+/* ========================= */
+/* 📊 FORECAST */
+/* ========================= */
+
+.forecast-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid rgba(255,255,255,0.2);
+}
+
+/* 🔥 FORCE SINGLE ROW */
+.forecast-container {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(80px, 1fr));
+    gap: 12px;
+    margin-top: 15px;
+}
+
+/* 📦 Card */
+.forecast-card {
+    background: rgba(255,255,255,0.15);
+    padding: 12px;
+    border-radius: 15px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.forecast-card:hover {
+    transform: translateY(-5px) scale(1.05);
+}
+
+/* Text */
+.forecast-card h4 {
+    font-size: 0.85rem;
+}
+
+.forecast-card img {
+    width: 45px;
+}
+
+.forecast-temp {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.forecast-desc {
+    font-size: 0.7rem;
+}
+
+/* ========================= */
+/* 📱 RESPONSIVE */
+/* ========================= */
+
+@media (max-width: 600px) {
     .search-section {
         flex-direction: column;
     }
@@ -192,4 +278,16 @@ h1 {
     #search-btn {
         width: 100%;
     }
+
+    /* horizontal scroll instead of breaking layout */
+    .forecast-container {
+        overflow-x: auto;
+        grid-template-columns: repeat(5, 120px);
+    }
+}
+
+/* 🎬 Fade */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
