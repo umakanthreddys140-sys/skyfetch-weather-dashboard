@@ -1,86 +1,195 @@
+/* 🔹 Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* 🔹 Animated Gradient Background */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+
+    background: linear-gradient(-45deg, #667eea, #764ba2, #6dd5ed, #2193b0);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
 }
 
+/* 🌈 Background Animation */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 🔹 Glass Container */
 .container {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
     padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    max-width: 500px;
     width: 100%;
+    max-width: 480px;
+    text-align: center;
+    color: white;
+
+    box-shadow:
+        0 8px 32px rgba(0,0,0,0.3),
+        inset 0 0 20px rgba(255,255,255,0.1);
 }
 
+/* 🔹 Title */
 h1 {
-    font-size: 2.5rem;
-    color: #333;
+    font-size: 2.8rem;
     margin-bottom: 10px;
+    letter-spacing: 1px;
 }
 
+/* 🔹 Tagline */
 .tagline {
-    color: #666;
     margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+/* 🔍 Search Section */
+.search-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+/* 🧠 Input */
+#city-input {
+    flex: 1;
+    padding: 14px 20px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
     font-size: 1rem;
+
+    background: rgba(255,255,255,0.2);
+    color: white;
+    backdrop-filter: blur(10px);
+
+    transition: 0.3s;
 }
 
-#weather-display {
-    margin-top: 30px;
+#city-input::placeholder {
+    color: rgba(255,255,255,0.7);
 }
 
-.loading {
-    color: #667eea;
-    font-size: 1.1rem;
+#city-input:focus {
+    background: rgba(255,255,255,0.3);
+    box-shadow: 0 0 10px rgba(255,255,255,0.5);
 }
 
+/* 🔘 Button */
+#search-btn {
+    padding: 14px 25px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: white;
+
+    background: linear-gradient(135deg, #ff7eb3, #ff758c);
+    box-shadow: 0 4px 15px rgba(255, 118, 136, 0.5);
+
+    transition: all 0.3s ease;
+}
+
+#search-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 118, 136, 0.7);
+}
+
+#search-btn:active {
+    transform: scale(0.95);
+}
+
+/* 🌤 Weather Info */
 .weather-info {
-    animation: fadeIn 0.5s ease-in;
+    animation: fadeIn 0.6s ease;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
+/* 🌆 City */
 .city-name {
     font-size: 2rem;
-    color: #333;
     margin-bottom: 10px;
 }
 
+/* 🌡 Temperature */
 .temperature {
     font-size: 3.5rem;
-    color: #667eea;
     font-weight: bold;
-    margin: 20px 0;
+    margin: 15px 0;
 }
 
+/* 🌥 Description */
 .description {
-    font-size: 1.3rem;
-    color: #555;
-    text-transform: capitalize;
-    margin-bottom: 15px;
+    font-size: 1.2rem;
+    opacity: 0.9;
 }
 
+/* 🌤 Icon */
 .weather-icon {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* 🌊 Floating Effect */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* ❌ Error */
+.error-message {
+    background: rgba(255, 0, 0, 0.15);
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 5px solid red;
+    backdrop-filter: blur(10px);
+}
+
+/* 🔄 Loading */
+.loading-container {
+    text-align: center;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255,255,255,0.2);
+    border-top: 5px solid white;
+    border-radius: 50%;
+    margin: auto;
+    animation: spin 1s linear infinite;
+}
+
+/* 🔄 Spin Animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 🎬 Fade In */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 📱 Responsive */
+@media (max-width: 500px) {
+    .search-section {
+        flex-direction: column;
+    }
+
+    #search-btn {
+        width: 100%;
+    }
 }
